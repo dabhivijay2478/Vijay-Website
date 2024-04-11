@@ -1,10 +1,9 @@
 import React from "react";
-// import { Player } from "@lottiefiles/react-lottie-player";
-import vijayresume from "./VijayResume.pdf"
-import logo from "../assets/logo1.jpg"
+import logo from "../assets/logo1.jpg";
+
 export default function Home() {
   const resume = () => {
-    // using Java Script method to get PDF file
+    // using JavaScript method to get PDF file
     fetch('VijayResume.pdf').then(response => {
       response.blob().then(blob => {
         // Creating new object of PDF file
@@ -17,59 +16,76 @@ export default function Home() {
       })
     })
   }
+
   return (
-    <>
+    <div id="container" class="p-20 w-auto flex px-24 justify-center relative">
 
-      <div className="w-full h-full mt-14 " >
-
-        <section className="pt-10 overflow-hidden  md:pt-0 sm:pt-16 2xl:pt-16 w-full h-full">
-
-          <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-
-            <div className="grid items-center grid-cols-1 md:grid-cols-2">
-
-              <div>
-                <h2 className="text-3xl font-bold leading-tight text-slate-00 sm:text-4xl lg:text-5xl">Hey 👋 I am <br className="block sm:hidden" />Vijay Dabhi</h2>
-                <p className="max-w-lg mt-3 text-xl leading-relaxed text-gray-00 md:mt-8">I am MERN Stack developer with a passion for building innovative and user-friendly web applications. I'm currently a student at Ganpat University, where I'm pursuing a B.Tech in Computer Science and Engineering.</p>
-
-                <p className="mt-4 text-xl text-gray-00 md:mt-8 ">
-                  <span className="relative inline-block">
-                    <span className="absolute inline-block w-full bottom-0.5 h-2 bg-yellow-300 "></span>
-                    <span className="relative dark:hover:bg-yellow-300 dark:hover:text-black" > Have a question? </span>
-                  </span>
-                  <br className="ml-2 block sm:hidden" />Ask me on <a href="https://linkedin.com/in/vijaydabhi" target={'_blank'} className=" transition-all duration-200 text-sky-500 hover:text-sky-600 hover:underline ">Linkedin</a>
-
-                  <br />
-                  <a href={vijayresume}
-                    onClick={resume} target="_blank" className="mt-5 inline-block px-5 py-2 mx-auto text-white bg-slate-700 rounded-full hover:bg-slate-900 md:mx-0">
-                    <i className="fa-solid fa-chevron-down"></i> Download Resume
-                  </a>
-                </p>
-              </div>
-
-              <div className="relative">
-
-                <img className="absolute inset-x-0 index- bottom-0 -mb-48 -translate-x-1/2 left-1/2" src="https://cdn.rareblocks.xyz/collection/celebration/images/team/1/blob-shape.svg" alt="" />
-                <div className="index-z-0" >
-                  <img
-                    className="index-z-0"
-                    src={logo}
-                    height={300}
-                    width={300}
-                  />
-                </div>
-
-
-              </div>
-
-            </div>
+      <div id="container" class="p-20 sm:p-16 md:p-20 lg:p-24 xl:p-20 w-auto flex flex-col md:flex-row px-4 sm:px-8 md:px-24 lg:px-24 xl:px-24 relative">
+        <div className="md:mr-10">
+          <img
+            className="rounded-lg"
+            src={logo}
+            height={400}
+            width={500}
+            alt="image of myself"
+          />
+        </div>
+        <div className="w-full md:w-2/3">
+          <h1 className="text-white font-bold text-4xl mb-6">
+            Hey there, <span className="text-indigo-400">I'm Vijay Dabhi</span>
+          </h1>
+          <p className="text-gray-300 mb-8">
+            👋 Hi! I'm passionate about developing with the <span className="text-cyan-600"> MERN stack </span>(MongoDB, Express.js, React.js, Node.js)
+            and enjoy crafting robust and efficient applications.With experience in Linux environments, I bring a wealth of knowledge to my projects.
+            I specialize in creating intuitive user interfaces using React.js and React Native, and my backend skills
+            include Node.js, Express.js, MongoDB, and Firebase. Let's connect and build something amazing together!
+          </p>
+          <div className="flex flex-wrap justify-start items-center gap-4">
+            <a
+              href="https://github.com/iam-aydin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-600"
+            >
+              <img
+                src="https://ucarecdn.com/1f465c47-4849-4935-91f4-29135d8607af/github2.svg"
+                alt="Github"
+                className="w-6 h-6"
+              />
+              <span>Visit my Github</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/aydin-vesali-moghaddam-82a860275/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-600"
+            >
+              <img
+                src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/linkedin.svg"
+                alt="LinkedIn"
+                className="w-6 h-6"
+              />
+              <span>Follow me on Linkedin</span>
+            </a>
+            <a
+              href="https://twitter.com/ichbinaydin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-600"
+            >
+              <img
+                src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
+                alt="Twitter"
+                className="w-6 h-6"
+              />
+              <span>Follow me on Twitter</span>
+            </a>
           </div>
-        </section>
-
-
-
+        </div>
       </div>
-    </>
-
+    </div>
   );
 }
+
+
+
