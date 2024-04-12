@@ -1,84 +1,41 @@
 import React from "react";
-import Home from "./Home";
 import { NavLink, Outlet } from "react-router-dom";
-import Footer from "./Footer";
+
 export default function Navbar() {
   return (
     <>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex="0" className="btn btn-ghost lg:hidden ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex="0"
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <NavLink to="/Home">Home</NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/Projects">Projects</NavLink>
-              </li>
-              <li>
-                <NavLink to="/About">About</NavLink>
-              </li>
-              <li>
-              <NavLink to="/Contact" className="ml-1">
-                Contact
-              </NavLink>
-            </li>
-            </ul>
+    <div className="bg-black">
+      <nav class="relative flex items-center justify-between sm:h-10 md:justify-center py-6 px-4 mt-0">
+        <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+          <div class="flex items-center justify-between w-full md:w-auto">
+            <NavLink to="/Home" aria-label="Home">
+              <img src="https://user-images.githubusercontent.com/80666494/209432961-00bd3921-d913-4b27-9945-c187fda92d21.jpg" height="40" width="40" className="rounded-2xl " />
+            </NavLink>
+            <div class="-mr-2 flex items-center md:hidden">
+              <button type="button" id="main-menu" aria-label="Main menu" aria-haspopup="true" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+              </button>
+            </div>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Vijay Dabhi</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-2 py-2 ">
-            <li>
-              <NavLink to="/Home" className="ml-1 ">Home</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/Projects" className="ml-1 ">
-                Projects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/About" className="ml-1">
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/Contact" className="ml-1">
-                Contact
-              </NavLink>
-            </li>
-          </ul>
+        <div class="hidden md:flex md:space-x-10">
+          <NavLink to="/Projects"
+            class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Project</NavLink>
+          <NavLink to="/Experience"
+            class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Experience</NavLink>
+          <NavLink to="/blog"
+            class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Blog</NavLink>
+          <NavLink to="/About" 
+            class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">About</NavLink>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Contact</a>
-        </div>
-      </div>
-      <div>
-        <main>
+       
+      </nav>
+      <div className="bg-black">
+        <main className="">
           <Outlet />
           {/* <Footer/> */}
         </main>
+      </div>
       </div>
     </>
   );
