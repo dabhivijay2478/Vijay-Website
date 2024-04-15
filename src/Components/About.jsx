@@ -21,10 +21,7 @@ export default function About() {
                   style={{ height: "300px", width: "300px" }}
                 />
               </div>
-              <div>
-                <h2 className="text-3xl font-bold leading-tight text-slate-00 sm:text-4xl lg:text-5xl">About Me</h2>
-                <p className="max-w-lg mt-3 text-xl leading-relaxed text-gray-00 md:mt-8">I am a MERN developer with expertise in TailwinCSS UI FarmeWork. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies. I enjoy solving complex problems and learning new skills. I am passionate about creating high-quality code that follows best practices and industry standards. I am always looking for new challenges and opportunities to grow as a developer.</p>
-              </div>
+            
               <div>
                 <h2 className="text-3xl font-bold leading-tight text-slate-00 sm:text-4xl lg:text-5xl">Skills</h2>
 

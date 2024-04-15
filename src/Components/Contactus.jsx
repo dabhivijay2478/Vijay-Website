@@ -1,273 +1,259 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useNavigate } from "react-router-dom";
 export default function Contactus() {
-    const navigation = useNavigate();
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [fullNameError, setFullNameError] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [messageError, setMessageError] = useState('');
+  const navigation = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [fullNameError, setFullNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
 
-    const validateForm = () => {
-        let isValid = true;
+  const validateForm = () => {
+    let isValid = true;
 
-        if (fullName.trim() === '') {
-            setFullNameError('Please enter your name');
-            isValid = false;
-        } else {
-            setFullNameError('');
-        }
+    if (fullName.trim() === "") {
+      setFullNameError("Please enter your name");
+      isValid = false;
+    } else {
+      setFullNameError("");
+    }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (email.trim() === '') {
-            setEmailError('Please enter your email address');
-            isValid = false;
-        } else if (!emailRegex.test(email)) {
-            setEmailError('Please enter a valid email address');
-            isValid = false;
-        } else {
-            setEmailError('');
-        }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    if (email.trim() === "") {
+      setEmailError("Please enter your email address");
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
 
-        if (message.trim() === '') {
-            setMessageError('Please enter your message');
-            isValid = false;
-        } else {
-            setMessageError('');
-        }
+    if (message.trim() === "") {
+      setMessageError("Please enter your message");
+      isValid = false;
+    } else {
+      setMessageError("");
+    }
 
-        return isValid;
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!validateForm()) {
-            return;
-        }
-        setIsLoading(true)
+    return isValid;
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+    setIsLoading(true);
 
-        const response = await fetch("/send-email", {
-            method: "POST",
-            changeOrigin: true,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fullName: fullName,
-                email: email,
-                message: message
-            }),
+    const response = await fetch("/send-email", {
+      method: "POST",
+      changeOrigin: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName: fullName,
+        email: email,
+        message: message,
+      }),
+    });
+    setFullName("");
+    setEmail("");
+    setMessage("");
+    const Maildata = response.json();
+    if (response.status === 400 || !Maildata) {
+      window.alert("Invaild");
+    } else if (response.status === 422 || !Maildata) {
+      window.alert("Filled The all Information !!");
+    } else {
+      window.alert("SucessFully Send Email To Vijay Dabhi");
+      setIsLoading(false);
 
-        });
-        setFullName('');
-        setEmail('');
-        setMessage('');
-        const Maildata = response.json();
-        if (response.status === 400 || !Maildata) {
-            window.alert("Invaild");
-        } else if (response.status === 422 || !Maildata) {
-            window.alert("Filled The all Information !!");
-
-        } else {
-            window.alert("SucessFully Send Email To Vijay Dabhi");
-            setIsLoading(false);
-
-            navigation('')
-        }
-
-    };
-    return (
-        <>
-            <div>
-                <section className="py-10 sm:py-16 lg:py-24">
-                    <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-                        <div className="max-w-2xl mx-auto text-center">
-                            <h2 className="text-3xl font-bold leading-tight text-gray-400 sm:text-4xl lg:text-5xl">Contact Me</h2>
-                        </div>
-
-
-                        <div className="grid grid-cols-1 gap-6 px-8 text-center md:px-0 md:grid-cols-3 mt-10">
-                            <div className="overflow-hidden bg-white border-solid border-2 border-teal-400 rounded-lg">
-                                <div className="p-6">
-                                    <div className="relative">
-                                        <Player
-                                            src="https://assets10.lottiefiles.com/packages/lf20_rw7SpS.json"
-                                            className="player"
-                                            loop
-                                            autoplay
-                                            style={{ height: "100px", width: "50px" }}
-                                        />
-                                    </div>
-                                    <p className="mt-1 text-lg font-medium text-gray-900">+91 9328656416</p>
-                                </div>
-                            </div>
-
-                            <div className="overflow-hidden bg-white border-solid border-2 border-teal-400 rounded-lg">
-                                <div className="p-6">
-                                    <div className="relative">
-                                        <Player
-                                            src="https://assets3.lottiefiles.com/packages/lf20_nxkmi9um.json"
-                                            className="player"
-                                            loop
-                                            autoplay
-                                            speed="0.5"
-                                            style={{ height: "100px", width: "50px" }}
-                                        />
-                                    </div>
-                                    <p className="mt-6 text-lg font-medium text-gray-900">vijaydabhi0426@gmail.com</p>
-                                    <p className="mt-1 text-lg font-medium text-gray-900">vijaydabhi0428@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div className="overflow-hidden bg-white border-solid border-2 border-teal-400 rounded-lg">
-                                <div className="p-6">
-                                    <div className="relative">
-                                        <Player
-                                            src="https://assets8.lottiefiles.com/packages/lf20_CEyvj2.json"
-                                            className="player"
-                                            loop
-                                            autoplay
-                                            style={{ height: "100px", width: "50px" }}
-                                        />
-                                    </div>
-                                    <p className="mt-6 text-lg font-medium leading-relaxed text-gray-900">Kathlal,Kheda,Gujarat 387630</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div className="lg:flex lg:items-center lg:-mx-6">
-                            <div className="lg:w-1/2 lg:mx-6">
-                                <div className="relative">
-
-
-                                    <Player
-                                        src="https://assets10.lottiefiles.com/private_files/lf30_vrcurbxk.json"
-                                        className="player"
-                                        loop
-                                        autoplay
-                                        style={{ height: "300px", width: "300px" }}
-                                    />
-                                </div>
-
-                                <div className="mt-6 w-80 md:mt-8">
-                                    <h3 className="text-gray-600 dark:text-gray-300 ">Follow Me</h3>
-
-                                    <div className="flex mt-4 -mx-1.5 ">
-                                        <ul className="social-icons flex justify-start">
-                                            <li className="mx-2" >
-                                                <a href="https://www.facebook.com/dabhi.vijay.921677?mibextid=ZbWKwL" target={'_blank'}
-                                                    className="footer-icon hover:text-indigo-500  text-2xl flex justify-center items-center w-8 h-8 dark:hover:bg-white rounded-full  text-slate-400 duration-300">
-                                                    <i className="fa-brands fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li className="mx-2">
-                                                <a href="https://twitter.com/vijaydabhi28" target={'_blank'}
-                                                    className="footer-icon hover:text-blue-400   text-2xl flex justify-center items-center w-8 h-8 dark:hover:bg-white rounded-full  text-slate-400 duration-300">
-                                                    <i className="fa-brands fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li className="mx-2">
-                                                <a href="https://instagram.com/vijay_dabhi__04?igshid=NTc4MTIwNjQ2YQ==" target={'_blank'}
-                                                    className="footer-icon hover:text-red-500 text-2xl flex justify-center items-center w-8 h-8 dark:hover:bg-white rounded-full  text-slate-400 duration-300  ">
-                                                    <i className="fa-brands fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                            <li className="mx-2">
-                                                <a href="https://linkedin.com/in/vijaydabhi" target={'_blank'}
-                                                    className="footer-icon hover:text-indigo-600 text-2xl flex justify-center items-center w-8 h-8 dark:hover:bg-white rounded-full  text-slate-400 duration-300 ">
-                                                    <i className="fa-brands fa-linkedin"></i>
-                                                </a>
-                                            </li>
-                                            <li className="mx-2">
-                                                <a href="https://github.com/dabhivijay2478" target={'_blank'}
-                                                    className="footer-icon hover:text-white hover:bg-black  text-2xl flex justify-center items-center w-8 h-8 dark:hover:bg-black rounded-full  text-slate-400 duration-300 ">
-                                                    <i className="fa-brands fa-github"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mt-8 lg:w-1/2 lg:mx-6 border-solid border-2 border-teal-400 rounded-lg">
-                                <div className="w-full px-8 py-10 mx-auto overflow-hidden bg-white rounded-lg shadow-2xl dark:bg-gray-900 lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
-                                    <h1 className="text-lg font-medium text-gray-600">What do you want to ask</h1>
-
-                                    <form className="mt-6">
-                                        <div className="flex-1">
-                                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Full Name</label>
-                                            <input
-                                                type="text"
-                                                placeholder="Enter Your Name"
-                                                value={fullName}
-                                                onChange={(e) => setFullName(e.target.value)}
-                                                required
-                                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                                            />
-                                            <span>{fullNameError && <p className="text-red-500">{fullNameError}</p>}</span>
-                                        </div>
-
-                                        <div className="flex-1 mt-6">
-                                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
-                                            <input
-                                                type="email"
-                                                placeholder="abc@example.com"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                required
-                                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                                            />
-                                            <span>{emailError && <p className="text-red-500">{emailError}</p>}</span>
-                                        </div>
-
-                                        <div className="w-full mt-6">
-                                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
-                                            <textarea
-                                                className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                                                placeholder="Message"
-                                                value={message}
-                                                onChange={(e) => setMessage(e.target.value)}
-                                                required
-                                            ></textarea>
-                                            <span>{messageError && <p className="text-red-500">{messageError}</p>}</span>
-                                        </div>
-
-                                        <button
-                                            onClick={handleSubmit}
-                                            className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                                            Send Message
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                </section>
-
+      navigation("");
+    }
+  };
+  return (
+    <>
+      <section class="bg-blue-50 dark:bg-black" id="contact">
+        <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div class="mb-4">
+            <div class="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
+              <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 dark:text-white text-3xl sm:text-5xl">
+                Get in Touch
+              </h2>
             </div>
-
-
-            {isLoading && (
-                <div className="fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-900 flex justify-center items-center z-50">
-                    <div className="">
-                        <Player
-                            src="https://assets4.lottiefiles.com/packages/lf20_3rlzwL.json"
-                            className="player"
-                            loop
-                            autoplay
-                            style={{ height: "300px", width: "350px" }}
-                        />
+          </div>
+          <div class="flex items-stretch justify-center">
+            <div class="grid md:grid-cols-2">
+              <div class="h-full pr-6">
+                <p class="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra, per inceptos himenaeos. Duis nec ipsum orci. Ut
+                  scelerisque sagittis ante, ac tincidunt sem venenatis ut.
+                </p>
+                <ul class="mb-6 md:mb-0">
+                  <li class="flex">
+                    <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="h-6 w-6"
+                      >
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
+                      </svg>
                     </div>
-                </div>
-            )}</>
-    )
+                    <div class="ml-4 mb-4">
+                      <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                        Our Address
+                      </h3>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        1230 Maecenas Street Donec Road
+                      </p>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        New York, EEUU
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex">
+                    <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="h-6 w-6"
+                      >
+                        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path>
+                        <path d="M15 7a2 2 0 0 1 2 2"></path>
+                        <path d="M15 3a6 6 0 0 1 6 6"></path>
+                      </svg>
+                    </div>
+                    <div class="ml-4 mb-4">
+                      <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                        Contact
+                      </h3>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        Mobile: +1 (123) 456-7890
+                      </p>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        Mail: tailnext@gmail.com
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex">
+                    <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="h-6 w-6"
+                      >
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                        <path d="M12 7v5l3 3"></path>
+                      </svg>
+                    </div>
+                    <div class="ml-4 mb-4">
+                      <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                        Working hours
+                      </h3>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        Monday - Friday: 08:00 - 17:00
+                      </p>
+                      <p class="text-gray-600 dark:text-slate-400">
+                        Saturday &amp; Sunday: 08:00 - 12:00
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card h-fit max-w-6xl p-5 md:p-12" id="form">
+                <h2 class="mb-4 text-2xl font-bold dark:text-white">
+                  Ready to Get Started?
+                </h2>
+                <form id="contactForm">
+                  <div class="mb-6">
+                    <div class="mx-0 mb-1 sm:mb-4">
+                      <div class="mx-0 mb-1 sm:mb-4">
+                        <label
+                          for="name"
+                          class="pb-1 text-xs uppercase tracking-wider"
+                        ></label>
+                        <input
+                          type="text"
+                          id="name"
+                          autocomplete="given-name"
+                          placeholder="Your name"
+                          class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                          name="name"
+                        />
+                      </div>
+                      <div class="mx-0 mb-1 sm:mb-4">
+                        <label
+                          for="email"
+                          class="pb-1 text-xs uppercase tracking-wider"
+                        ></label>
+                        <input
+                          type="email"
+                          id="email"
+                          autocomplete="email"
+                          placeholder="Your email address"
+                          class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                          name="email"
+                        />
+                      </div>
+                    </div>
+                    <div class="mx-0 mb-1 sm:mb-4">
+                      <label
+                        for="textarea"
+                        class="pb-1 text-xs uppercase tracking-wider"
+                      ></label>
+                      <textarea
+                        id="textarea"
+                        name="textarea"
+                        cols="30"
+                        rows="5"
+                        placeholder="Write your message..."
+                        class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      class="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
