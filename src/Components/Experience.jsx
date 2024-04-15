@@ -3,6 +3,11 @@ import React from "react";
 export default function Experience() {
   return (
     <>
+      <div className=" flex justify-center m-5">
+        <h2 className="text-3xl r font-bold leading-tight text-slate-00 sm:text-4xl lg:text-5xl">
+          Experience
+        </h2>
+      </div>
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical hover:border-cyan-400">
         <li className="hover:border-cyan-400">
           <div className="timeline-middle">

@@ -48,7 +48,10 @@ const Navbar = () => {
   return (
     <>
       <div className="bg-black">
-        <nav className="relative flex items-center justify-between h-16 sm:h-20 md:h-24 lg:h-28 px-4 md:px-8">
+        <nav
+          id="navbar"
+          className="relative flex items-center justify-between h-16 sm:h-20 md:h-24 lg:h-28 px-4 md:px-8"
+        >
           <div className="flex items-center flex-1">
             <a href="#home" aria-label="Home">
               <h2 className="text-cyan-500 text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold">
@@ -141,9 +144,8 @@ const Navbar = () => {
           </div>
         </nav>
         <motion.div
-          className={`md:hidden ml-5 mr-5 ${
-            isMobileMenuOpen ? "block" : "hidden"
-          }`}
+          className={`md:hidden ml-5 mr-5 ${isMobileMenuOpen ? "block" : "hidden"
+            }`}
           initial="hidden"
           animate={isMobileMenuOpen ? "visible" : "hidden"}
           id="mobile_menu"
@@ -223,9 +225,12 @@ const Navbar = () => {
             <Contactus />
           </div>
         </main>
+      </div>
+      <div className="fixed bottom-0 right-0 mb-8 mr-8">
         <div className="badge badge-primary badge-lg rounded-full h-10 w-10">
-          {" "}
-          <i class="fa-solid fa-arrow-up"></i>
+          <a href="#navbar">
+            <i className="fa-solid fa-arrow-up"></i>
+          </a>
         </div>
       </div>
     </>
