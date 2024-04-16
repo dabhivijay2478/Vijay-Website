@@ -6,12 +6,22 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import Blog from "./Blog";
 import Contactus from "./Contactus";
-
+import { useInView } from "react-intersection-observer";
+import { FaLongArrowAltUp } from "react-icons/fa";
+import Footer from "./Footer";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [ref, inView] = useInView({ threshold: 0.5 });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const navListVariants = {
@@ -63,8 +73,9 @@ const Navbar = () => {
             <motion.div
               className="hidden md:flex md:space-x-10 justify-center"
               initial="hidden"
-              animate="visible"
+              animate={inView ? "visible" : "hidden"}
               variants={navListVariants}
+              ref={ref}
             >
               <motion.div variants={navItemVariants}>
                 <a
@@ -72,14 +83,6 @@ const Navbar = () => {
                   className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   About
-                </a>
-              </motion.div>
-              <motion.div variants={navItemVariants}>
-                <a
-                  href="#about"
-                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Skill
                 </a>
               </motion.div>
               <motion.div variants={navItemVariants}>
@@ -144,8 +147,9 @@ const Navbar = () => {
           </div>
         </nav>
         <motion.div
-          className={`md:hidden ml-5 mr-5 ${isMobileMenuOpen ? "block" : "hidden"
-            }`}
+          className={`md:hidden ml-5 mr-5 ${
+            isMobileMenuOpen ? "block" : "hidden"
+          }`}
           initial="hidden"
           animate={isMobileMenuOpen ? "visible" : "hidden"}
           id="mobile_menu"
@@ -158,14 +162,6 @@ const Navbar = () => {
                 className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out block py-3"
               >
                 About
-              </a>
-            </motion.div>
-            <motion.div variants={navItemVariants}>
-              <a
-                href="#about"
-                className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out block py-3"
-              >
-                Skill
               </a>
             </motion.div>
             <motion.div variants={navItemVariants}>
@@ -211,7 +207,6 @@ const Navbar = () => {
           <div id="about">
             <About />
           </div>
-
           <div id="experience">
             <Experience />
           </div>
@@ -226,10 +221,14 @@ const Navbar = () => {
           </div>
         </main>
       </div>
-      <div className="fixed bottom-0 right-0 mb-8 mr-8">
+      <Footer/>
+      <div
+        className="fixed bottom-0 right-0 mb-8 mr-8 cursor-pointer"
+        onClick={scrollToTop}
+      >
         <div className="badge badge-primary badge-lg rounded-full h-10 w-10">
           <a href="#navbar">
-            <i className="fa-solid fa-arrow-up"></i>
+            <FaLongArrowAltUp />
           </a>
         </div>
       </div>

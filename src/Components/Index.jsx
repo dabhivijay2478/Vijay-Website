@@ -4,6 +4,7 @@ import About from './About';
 import Projects from "./Projects";
 import Contactus from './Contactus';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function Index() {
     const alignCenter = { display: 'flex', alignItems: 'center' }
@@ -28,6 +29,7 @@ export default function Index() {
                     <Contactus />
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

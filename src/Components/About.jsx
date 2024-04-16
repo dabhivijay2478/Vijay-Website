@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
-import Skills from "./Skills";
 import { useInView } from "react-intersection-observer";
-
+import { FaReact, FaNode, FaGitAlt, FaPython, FaGithub } from "react-icons/fa6";
+import { IoLogoJavascript } from "react-icons/io";
+import { IoLogoFirebase } from "react-icons/io5";
+import { SiExpress, SiMongodb, SiMysql } from "react-icons/si";
+import { BiLogoTailwindCss } from "react-icons/bi";
 export default function About() {
   const [animationVisible, setAnimationVisible] = useState(false);
   const [skillsVisible, setSkillsVisible] = useState(false);
@@ -57,7 +60,47 @@ export default function About() {
                 </h2>
               </motion.div>
             </div>
-            <Skills />
+            <div class="bg-black ">
+              <div id="features" class="mx-auto max-w-6xl">
+                <ul class="mt-5 grid grid-cols-2 gap-8 text-center text-slate-700 md:grid-cols-4">
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <SiMongodb class="mx-auto h-10 w-10 text-green-500" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <SiExpress class="mx-auto h-10 w-10 text-white" />
+                  </li>
+
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <FaReact class="mx-auto h-10 w-10 text-sky-600" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <FaNode class="mx-auto h-16 w-16 text-green-700 " />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <IoLogoJavascript class="mx-auto h-12 w-12 bg-yellow-600 text-black rounded-sm" />
+                  </li>
+
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <BiLogoTailwindCss class="mx-auto h-10 w-10 text-cyan-500" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <IoLogoFirebase class="mx-auto h-10 w-10 text-amber-500" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <SiMysql class="mx-auto h-16 w-16 text-sky-800" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <FaGitAlt class="mx-auto h-16 w-16 text-orange-500" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <FaGithub class="mx-auto h-16 w-16 text-white" />
+                  </li>
+                  <li class="rounded-xl border border-solid border-slate-700  px-6 py-8 shadow-lg hover:border-cyan-500 cursor-pointer">
+                    <FaPython class="mx-auto h-16 w-16 text-blue-500" />
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </div>
