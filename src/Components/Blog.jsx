@@ -1,13 +1,13 @@
 import React from "react";
 
 export default function Blog() {
-    return (
-        <>
-            <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
-                <h2 class="mb-1 text-3xl font-extrabold leading-tight text-white">
-                    Blog
-                </h2>
-                <div class="w-full mt-5">
+  return (
+    <>
+      <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
+        <h2 class="mb-1 text-3xl font-extrabold leading-tight text-white">
+          Blog
+        </h2>
+        {/* <div class="w-full mt-5">
                     <div class="flex flex-col w-full mb-10 sm:flex-row">
                         <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
                             <div class="relative h-full ml-0 mr-0 sm:mr-10">
@@ -93,8 +93,34 @@ export default function Blog() {
                         </div>
                         
                     </div>
-                </div>
-            </div>
-        </>
-    );
+                </div> */}
+        <div class=" h-screen flex flex-col items-center justify-center text-center">
+          <div class="text-white">
+            <h1 class="text-4xl font-bold">Coming Soon</h1>
+            <p class="mt-4 text-lg">We're working on something awesome!</p>
+          </div>
+          <div class="mt-8">
+            <form action="#" method="post" class="flex items-center">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                class="py-2 px-4 bg-gray-800 text-white rounded-l-md focus:outline-none"
+                required
+              />
+              <button
+                type="submit"
+                class="bg-blue-500 py-2 px-4 text-white rounded-r-md hover:bg-blue-600 focus:outline-none"
+              >
+                Subscribe
+              </button>
+            </form>
+            <p class="mt-2 text-gray-400 text-sm">
+              Be the first to know when we launch!
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

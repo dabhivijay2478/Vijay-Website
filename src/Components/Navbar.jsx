@@ -79,10 +79,18 @@ const Navbar = () => {
             >
               <motion.div variants={navItemVariants}>
                 <a
-                  href="#about"
+                  href="#home"
                   className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   About
+                </a>
+              </motion.div>
+              <motion.div variants={navItemVariants}>
+                <a
+                  href="#skill"
+                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
+                >
+                  Skill
                 </a>
               </motion.div>
               <motion.div variants={navItemVariants}>
@@ -158,10 +166,18 @@ const Navbar = () => {
           <motion.div variants={navListVariants}>
             <motion.div variants={navItemVariants}>
               <a
-                href="#about"
+                href="#home"
                 className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out block py-3"
               >
                 About
+              </a>
+            </motion.div>
+            <motion.div variants={navItemVariants}>
+              <a
+                href="#skill"
+                className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out block py-3"
+              >
+                Skill
               </a>
             </motion.div>
             <motion.div variants={navItemVariants}>
@@ -199,15 +215,15 @@ const Navbar = () => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="bg-black">
+      <div className="bg-black ">
         <main>
           <div id="home">
             <Home />
           </div>
-          <div id="about">
+          <div id="skill">
             <About />
           </div>
-          <div id="experience">
+          <div id="experience" className="ml-3 mr-3">
             <Experience />
           </div>
           <div id="projects">
@@ -221,7 +237,7 @@ const Navbar = () => {
           </div>
         </main>
       </div>
-      <Footer/>
+      <Footer />
       <div
         className="fixed bottom-0 right-0 mb-8 mr-8 cursor-pointer"
         onClick={scrollToTop}

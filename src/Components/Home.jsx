@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TypeAnimation } from "react-type-animation"; // Import TypeAnimation from react-type-animation
-import logo from "../assets/logo1.JPG";
+import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function Home() {
   const [showText, setShowText] = useState(false);
@@ -86,11 +86,7 @@ export default function Home() {
             className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-700"
             whileHover={{ scale: 1.05 }}
           >
-            <img
-              src="https://ucarecdn.com/1f465c47-4849-4935-91f4-29135d8607af/github2.svg"
-              alt="Github"
-              className="w-6 h-6"
-            />
+            <FaGithub className="w-6 h-6" />
             <span>Visit my Github</span>
           </motion.a>
           <motion.a
@@ -100,11 +96,7 @@ export default function Home() {
             className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-700"
             whileHover={{ scale: 1.05 }}
           >
-            <img
-              src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/linkedin.svg"
-              alt="LinkedIn"
-              className="w-6 h-6"
-            />
+            <FaLinkedinIn className="w-6 h-6" />
             <span>Follow me on Linkedin</span>
           </motion.a>
           <motion.a
@@ -114,30 +106,10 @@ export default function Home() {
             className="bg-indigo-500 rounded-lg p-3 flex items-center gap-2 text-white hover:bg-indigo-700"
             whileHover={{ scale: 1.05 }}
           >
-            <img
-              src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-              alt="Twitter"
-              className="w-6 h-6"
-            />
+            <FaTwitter className="w-6 h-6" />
             <span>Follow me on Twitter</span>
           </motion.a>
         </div>
-        <div
-          className="absolute bottom-0 left-0 z-0 h-1/3 w-full border-b"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right top, rgba(79, 70, 229, 0.2) 0%, transparent 50%, transparent 100%)",
-            borderColor: "rgba(92, 79, 240, 0.2)",
-          }}
-        ></div>
-        <div
-          className="absolute bottom-0 right-0 z-0 h-1/3 w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(to left top, rgba(220, 38, 38, 0.2) 0%, transparent 50%, transparent 100%)",
-            borderColor: "rgba(92, 79, 240, 0.2)",
-          }}
-        ></div>
       </motion.div>
     </>
   );
