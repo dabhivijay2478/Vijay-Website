@@ -1,126 +1,40 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Blog() {
   return (
     <>
-      <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
-        <h2 class="mb-1 text-3xl font-extrabold leading-tight text-white">
+      <motion.div
+        className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-white">
           Blog
         </h2>
-        {/* <div class="w-full mt-5">
-                    <div class="flex flex-col w-full mb-10 sm:flex-row">
-                        <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
-                            <div class="relative h-full ml-0 mr-0 sm:mr-10">
-                                <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
-                                <div class="relative h-full p-5  bg-black border-2 border-indigo-500 rounded-lg">
-                                    <div class="flex items-center -mt-1">
-                                        <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">
-                                            DAPP Development
-                                        </h3>
-                                    </div>
-                                    <p class="mt-3 mb-1 text-xs font-medium text-indigo-500 uppercase">
-                                        ------------
-                                    </p>
-                                    <p class="mb-2 text-gray-600">
-                                        A decentralized application (dapp) is an application built
-                                        on a decentralized network that combines a smart contract
-                                        and a frontend user interface.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-1/2">
-                            <div class="relative h-full ml-0 md:mr-10">
-                                <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
-                                <div class="relative h-full p-5 bg-black  border-2 border-purple-500 rounded-lg">
-                                    <div class="flex items-center -mt-1">
-                                        <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">
-                                            Web 3.0 Development
-                                        </h3>
-                                    </div>
-                                    <p class="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">
-                                        ------------
-                                    </p>
-                                    <p class="mb-2 text-gray-600">
-                                        Web 3.0 is the third generation of Internet services that
-                                        will focus on understanding and analyzing data to provide a
-                                        semantic web.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col w-full mb-5 sm:flex-row">
-                        <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
-                            <div class="relative h-full ml-0 mr-0 sm:mr-10">
-                                <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-blue-400 rounded-lg"></span>
-                                <div class="relative h-full p-5 bg-black  border-2 border-blue-400 rounded-lg">
-                                    <div class="flex items-center -mt-1">
-                                        <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">
-                                            Project Audit
-                                        </h3>
-                                    </div>
-                                    <p class="mt-3 mb-1 text-xs font-medium text-blue-400 uppercase">
-                                        ------------
-                                    </p>
-                                    <p class="mb-2 text-gray-600">
-                                        A Project Audit is a formal review of a project, which is
-                                        intended to assess the extent up to which project management
-                                        standards are being upheld.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
-                            <div class="relative h-full ml-0 mr-0 sm:mr-10">
-                                <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-yellow-400 rounded-lg"></span>
-                                <div class="relative h-full p-5 bg-black  border-2 border-yellow-400 rounded-lg">
-                                    <div class="flex items-center -mt-1">
-                                        <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">
-                                            Hacking / RE
-                                        </h3>
-                                    </div>
-                                    <p class="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">
-                                        ------------
-                                    </p>
-                                    <p class="mb-2 text-gray-600">
-                                        A security hacker is someone who explores methods for
-                                        breaching defenses and exploiting weaknesses in a computer
-                                        system or network.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div> */}
-        <div class=" h-screen flex flex-col items-center justify-center text-center">
-          <div class="text-white">
-            <h1 class="text-4xl font-bold">Coming Soon</h1>
-            <p class="mt-4 text-lg">We're working on something awesome!</p>
-          </div>
-          <div class="mt-8">
-            <form action="#" method="post" class="flex items-center">
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                class="py-2 px-4 bg-gray-800 text-white rounded-l-md focus:outline-none"
-                required
-              />
-              <button
-                type="submit"
-                class="bg-blue-500 py-2 px-4 text-white rounded-r-md hover:bg-blue-600 focus:outline-none"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p class="mt-2 text-gray-400 text-sm">
-              Be the first to know when we launch!
-            </p>
+
+        <div className="h-screen flex flex-col items-center justify-center text-center">
+          <div className="text-white">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl font-bold"
+            >
+              Coming Soon
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-4 text-lg"
+            >
+              We're working on something awesome!
+            </motion.p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

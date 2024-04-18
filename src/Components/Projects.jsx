@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectData from "../Json/Data.json";
 import { TbCertificate, TbBrandRedux, TbMilk } from "react-icons/tb";
 import { FaRobot, FaConnectdevelop } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 
 export default function Projects() {
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Only trigger animation once
+    threshold: 0.5, // Trigger when 50% of the element is visible
+  });
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+  }, [inView]);
+
   const getIconComponent = (logo) => {
     let IconComponent;
 
@@ -58,8 +72,12 @@ export default function Projects() {
             <motion.div
               key={index}
               className="rounded-md border border-fuchsia-500 p-8 text-center shadow relative"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 0.95 }}
               whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={animate ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              ref={ref}
             >
               <div
                 className="button-text mx-auto flex h-12 w-12 items-center justify-center rounded-md border"
